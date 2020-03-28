@@ -21,5 +21,6 @@ namespace WebApi.Model
 
         public string Purchaser { get; set; }
 
+
     }
 }
