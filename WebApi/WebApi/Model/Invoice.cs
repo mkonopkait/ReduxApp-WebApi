@@ -21,6 +21,6 @@ namespace WebApi.Model
 
         public string Purchaser { get; set; }
 
-
+        public List<InvoiceProduct> InvoiceProduct { get; set; }
     }
 }

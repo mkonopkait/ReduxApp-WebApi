@@ -48,7 +48,7 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
         {
-            if (id != product.Id)
+            if (id != product.ProductId)
             {
                 return BadRequest();
             }
@@ -83,7 +83,7 @@ namespace WebApi.Controllers
             this._context.Product.Add(product);
             await this._context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+            return CreatedAtAction("GetProduct", new { id = product.ProductId }, product);
         }
 
         // DELETE: api/Products/5
@@ -104,7 +104,7 @@ namespace WebApi.Controllers
 
         private bool ProductExists(int id)
         {
-            return this._context.Product.Any(e => e.Id == id);
+            return this._context.Product.Any(e => e.ProductId == id);
         }
     }
 }

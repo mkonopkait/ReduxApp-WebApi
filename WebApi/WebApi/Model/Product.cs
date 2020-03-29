@@ -12,5 +12,7 @@ namespace WebApi.Model
         public string Name { get; set; }
 
         public decimal Price { get; set; }
+
+        public List<InvoiceProduct> InvoiceProduct { get; set; }
     }
 }
