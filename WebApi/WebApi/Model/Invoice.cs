@@ -7,7 +7,7 @@ namespace WebApi.Model
 {
     public class Invoice
     {
-        public int Id { get; set; }
+        public int InvoiceId { get; set; }
 
         public int Number { get; set; }
 
