@@ -32,6 +32,11 @@ namespace WebApi.Helpers
                     {
                         Name = "Mleko",
                         Price = 1.6m
+                    },
+                    new Product()
+                    {
+                        Name = "Gitara",
+                        Price = 10.5m
                     }
                 };
                 context.Product.AddRange(products);

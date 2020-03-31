@@ -1,19 +1,20 @@
 import React, {useState, useEffect} from "react"
 
-const useForm = (initailFieldValues) => {
-    const {values, setValues} = useState(initailFieldValues)
+const useForm = (initialFieldValues) => {
+    const [values, setValues] = useState(initialFieldValues)
 
-    const habdleInputChange = e => {
-        const {name, value } = e.target
+    const handleInputChange = e => {
+        const { name, value } = e.target
         setValues({
             ...values,
             [name]: value
         })
+        console.log(values)
     }
     return {
         values,
         setValues,
-        habdleInputChange
+        handleInputChange
     };
 }
 

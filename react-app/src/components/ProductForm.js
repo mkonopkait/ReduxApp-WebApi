@@ -28,16 +28,65 @@ const ProductForm = ({classes, ...props}) => {
         <Grid container>
             <Grid item xs={6}>
                 <TextField
-                name="Name"
+                name="Sprzedawca"
                 variant="outlined"
-                label="Name"
+                label="Sprzedawca"
                 value={values.fullName}
                 onChange={handleInputChange}
                 />
                 <TextField
-                name="drugie"
+                name="NIP"
                 variant="outlined"
-                label="drugie"
+                label="NIP"
+                value={values.drugie}
+                onChange={handleInputChange}
+                />
+                <TextField
+                name="Ulica"
+                variant="outlined"
+                label="Ulica i nr"
+                value={values.drugie}
+                onChange={handleInputChange}
+                />
+                <Grid container>
+                    <Grid item xs={6}>
+                        <TextField
+                        name="Sprzedawca"
+                        variant="outlined"
+                        label="Sprzedawca"
+                        value={values.fullName}
+                        onChange={handleInputChange}
+                        />
+                    </Grid><Grid item xs={6}>
+                        <TextField
+                        name="Sprzedawca"
+                        variant="outlined"
+                        label="Sprzedawca"
+                        value={values.fullName}
+                        onChange={handleInputChange}
+                        />
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid item xs={6}>
+                <TextField
+                name="Nabywca"
+                variant="outlined"
+                label="Nabywca"
+                value={values.fullName}
+                onChange={handleInputChange}
+                />
+                <TextField
+                name="NIP"
+                variant="outlined"
+                label="NIP"
+                value={values.drugie}
+                onChange={handleInputChange}
+                />
+                <TextField
+                name="Ulica"
+                variant="outlined"
+                label="Ulica i nr"
                 value={values.drugie}
                 onChange={handleInputChange}
                 />

@@ -1,5 +1,12 @@
+body {
+  background-color: #4d4d53;
+}
+
 .App {
   text-align: center;
+  min-height: 500px;
+  width: 400px;
+  margin: 40px auto;
 }
 
 .App-logo {
@@ -23,6 +30,8 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+#my-form 
 
 .App-link {
   color: #61dafb;
