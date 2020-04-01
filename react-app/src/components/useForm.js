@@ -13,7 +13,6 @@ const useForm = (initialFieldValues, validate) => {
             ...fieldValue
         })
         validate(fieldValue)
-        console.log(values)
     }
     return {
         values,

@@ -3,7 +3,8 @@ export const ACTION_TYPES = {
     ADD_INVOICE_PRODUCT : 'ADD_INVOICE_PRODUCT',
     UPDATE : 'UPDATE',
     DELETE_INVOICE_PRODUCT : 'DELETE',
-    FETCH_ALL : 'FETCH_ALL'
+    FETCH_ALL : 'FETCH_ALL',
+    SET_COMPANIES : 'SET_COMPANIES'
 }
 
 const newItem = {
@@ -25,6 +26,14 @@ export const deleteItem = (id) => dispatch => {
     dispatch({
         type:ACTION_TYPES.DELETE_INVOICE_PRODUCT,
         payload: id
+    })
+}
+
+export const setCompanies = (data) => dispatch => {
+    console.log("comAction", data)
+    dispatch({
+        type:ACTION_TYPES.SET_COMPANIES,
+        payload: data
     })
 }
 

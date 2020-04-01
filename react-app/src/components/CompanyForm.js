@@ -1,9 +1,10 @@
 import React,{useState,} from "react";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Grid, Button, TextField, withStyles } from "@material-ui/core";
 import ProductsInput from "./ProductsInput";
 import ProductsList from "./ProductsList";
 import useForm from "./useForm";
+import { setCompanies } from "../actions/invoiceProduct";
 
 const styles = theme => ({
     root: {
@@ -20,8 +21,6 @@ const styles = theme => ({
         width: '20%',
     },
     Button:{
-        width: '20%',
-        height: '30%',
         justifyContent: 'center',
         alignItems: 'center',
         margin: theme.spacing(1)
@@ -33,19 +32,19 @@ const initialFieldValues = {
     sNip: '',
     sAddress: '',
     sZipCode: '',
-    sPlace: '',
     sLocality: '',
     pCompanyName: '',
     pNip: '',
     pAddress: '',
     pZipCode: '',
-    pPlace: '',
     pLocality: ''
 }
 
 const CompanyForm = ({classes, ...props}) => {
     const seller = useSelector(state => state.invoiceProduct.seller);
     const purchaser = useSelector(state => state.invoiceProduct.purchaser);
+    const companies = useSelector(state => state.invoiceProduct.companies);
+    const dispatch = useDispatch();
 
     const validate = (fieldValues = values) => {
         let temp ={}
@@ -57,8 +56,6 @@ const CompanyForm = ({classes, ...props}) => {
             temp.sAddress = fieldValues.sAddress?"":"To pole jest wymagane"
         if('sZipCode' in fieldValues)
             temp.sZipCode = (/([0-9]{2})\-[0-9]{3}/).test(fieldValues.sZipCode)?"":"To pole jest wymagane"
-        if('sPlace' in fieldValues)
-            temp.sPlace = fieldValues.sPlace?"":"To pole jest wymagane"
         if('sLocality' in fieldValues)
             temp.sLocality = fieldValues.sLocality?"":"To pole jest wymagane"
         if('pCompanyName' in fieldValues)
@@ -69,8 +66,6 @@ const CompanyForm = ({classes, ...props}) => {
             temp.pAddress = fieldValues.pAddress?"":"To pole jest wymagane"
         if('pZipCode' in fieldValues)
             temp.pZipCode = (/([0-9]{2})\-[0-9]{3}/).test(fieldValues.pZipCode)?"":"To pole jest wymagane"
-        if('pPlace' in fieldValues)
-            temp.pPlace = fieldValues.pPlace?"":"To pole jest wymagane"
         if('pLocality' in fieldValues)
             temp.pLocality = fieldValues.pLocality?"":"To pole jest wymagane"
         setErrors({
@@ -84,7 +79,9 @@ const CompanyForm = ({classes, ...props}) => {
     const handleSubmit = e => {
         console.log("git")
         if(validate()){
-            Window.alert('Sukces! Możesz teraz zaimportować dokument.')
+            console.log(values)
+            dispatch(setCompanies(values));
+            console.log("companies",companies)
         }
         
     }

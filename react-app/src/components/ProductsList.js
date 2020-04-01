@@ -41,7 +41,7 @@ const ProductsList = ({classes, ...props}) => {
                         <TableCell>Cena</TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody className={classes.TableHead}>
+                <TableBody >
                 {
                     console.log("ProductList props",props),
                     props.invoiceList.map((record, index) =>{

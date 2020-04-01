@@ -1,15 +1,7 @@
 import React, {useState, useEffect} from "react";
-import { connect } from 'react-redux';
 import * as actions from "../actions/product";
 import { Grid, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, withStyles, Button } from "@material-ui/core";
-import ProductForm from "./ProductForm";
 import CompanyForm from "./CompanyForm";
-import ProductsList from "./ProductsList";
-import ProductsListItem from "./ProductsListItem";
-import ProductsInput from "./ProductsInput";
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Pdf from "react-to-pdf";
 
 const styles = theme => ({
     paper:{
@@ -24,12 +16,8 @@ const styles = theme => ({
     }
 })
 
-const ref = React.createRef();
 
 const Invoice = ({classes, ...props}) => {
-    //const [x, setX] = useState(0)
-    //setX(5)
-
     useEffect(() => {
         
     }, [])
@@ -40,15 +28,7 @@ const Invoice = ({classes, ...props}) => {
     }
 
     return (
-        <Paper ref={ref} className={classes.paper} elevation={3} style={{backgroundColor: '#F5F5F5'}}>
-            <Tabs>
-                <Tab>
-                    dsadass
-                </Tab>
-            </Tabs>
-            <Pdf targetRef={ref} filename="code-example.pdf">
-                {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-            </Pdf>
+        <Paper className={classes.paper} elevation={3} style={{backgroundColor: '#F5F5F5'}}>
             <div className={classes.div}>
                 <h1>Faktura</h1>
             </div>

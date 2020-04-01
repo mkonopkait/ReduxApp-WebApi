@@ -6,24 +6,7 @@ const initialState ={
         name: "",
         price: ""
     },
-    seller:{
-        type: 'seller',
-        companyName: '',
-        nip: '',
-        address: '',
-        zipCode: '',
-        place: '',
-        locality: ''
-    },
-    purchaser:{
-        type: 'purchaser',
-        companyName: '',
-        nip: '',
-        address: '',
-        zipCode: '',
-        place: '',
-        locality: ''
-    }
+    companiesData:{}
 }
 
 export const invoiceProduct = (state=initialState, action) =>{
@@ -53,6 +36,12 @@ export const invoiceProduct = (state=initialState, action) =>{
             return{
                 ...state,
                 invoiceList: state.invoiceList.filter(x => x.productId != action.payload )
+            }
+
+        case ACTION_TYPES.SET_COMPANIES:
+            return{
+                ...state,
+                companiesData: action.payload
             }
     
         default:
