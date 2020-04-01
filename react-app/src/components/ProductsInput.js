@@ -18,6 +18,8 @@ const ProductsInput = (props) => {
         price: ''
     }
 
+    const inputRef = React.createRef();
+
     const productList = useSelector(state => state.product.list);
     const currentItem = useSelector(state => state.invoiceProduct.currentItem);
     const invoiceList = useSelector(state => state.invoiceProduct.invoiceList);
@@ -26,6 +28,7 @@ const ProductsInput = (props) => {
     const [cItem, setItem] = useState("");
 
     const handleSubmit = e => {
+        e.preventDefault();
         //props.addInvoiceItem(item)
         console.log("submit",e);
         setItem(currentItem.name);
@@ -33,13 +36,15 @@ const ProductsInput = (props) => {
         setVal(val => [...val, cItem]);
         console.log("lista", val);
         dispatch(addItem(currentItem));
+        console.log("ref", inputRef)
     }
 
     
 
     const handleInputChange = e =>{
-        currentItem.productId = e.value
-        currentItem.name = e.label
+        currentItem.productId = e.container.productId
+        currentItem.name = e.container.name
+        currentItem.price = e.container.price
         console.log(e)
         console.log("currentItem", currentItem)
     }
@@ -48,7 +53,7 @@ const ProductsInput = (props) => {
             <form>
                 <Grid container >
                 <Grid item xs={11}>
-                    <Select options={productList.map(record => ({label: record.name, value: record.productId}))}
+                    <Select ref={inputRef} options={productList.map(record => ({label: record.name, value: record.productId, container: record}))}
                     onChange={handleInputChange} 
                     />
                     

@@ -5,11 +5,10 @@ import { store } from "./actions/store";
 import { Provider } from "react-redux";
 import Products from './components/Products';
 import Invoice from './components/Invoice';
-import { Container } from "@material-ui/core";
+import { Container, } from "@material-ui/core";
 import Document from './components/Document';
 
-class App extends Component {
-  render(){
+function App() {
     return (
       <Provider store={store}>
         <Container maxWidth="lg">
@@ -17,7 +16,6 @@ class App extends Component {
         </Container>
       </Provider>
     );
-  }
 }
 
 export default App;

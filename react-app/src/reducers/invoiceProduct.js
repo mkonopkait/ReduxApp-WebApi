@@ -5,6 +5,24 @@ const initialState ={
         productId: "",
         name: "",
         price: ""
+    },
+    seller:{
+        type: 'seller',
+        companyName: '',
+        nip: '',
+        address: '',
+        zipCode: '',
+        place: '',
+        locality: ''
+    },
+    purchaser:{
+        type: 'purchaser',
+        companyName: '',
+        nip: '',
+        address: '',
+        zipCode: '',
+        place: '',
+        locality: ''
     }
 }
 
@@ -18,9 +36,20 @@ export const invoiceProduct = (state=initialState, action) =>{
                 invoiceList:[action.payload]
             }*/
         case ACTION_TYPES.ADD_INVOICE_PRODUCT:
+            const newItem ={
+                productId: action.payload.productId,
+                name: action.payload.name,
+                price: action.payload.price
+            }
             return{
                 ...state,
-                invoiceList:[...state.invoiceList, action.payload]
+                invoiceList:[...state.invoiceList, newItem]
+            }
+        case ACTION_TYPES.DELETE_INVOICE_PRODUCT:
+            console.log("id", action.payload)
+            return{
+                ...state,
+                invoiceList: state.invoiceList.filter(x => x.productId != action.payload )
             }
     
         default:

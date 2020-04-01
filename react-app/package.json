@@ -15,6 +15,7 @@
     "react-scripts": "3.4.1",
     "react-select": "^2.0.0-beta.7",
     "react-select-search": "^1.0.2",
+    "react-to-pdf": "0.0.10",
     "redux": "^4.0.5",
     "redux-form": "^8.3.1",
     "redux-forms": "^1.0.0-3",

@@ -2,7 +2,7 @@
 export const ACTION_TYPES = {
     ADD_INVOICE_PRODUCT : 'ADD_INVOICE_PRODUCT',
     UPDATE : 'UPDATE',
-    DELETE : 'DELETE',
+    DELETE_INVOICE_PRODUCT : 'DELETE',
     FETCH_ALL : 'FETCH_ALL'
 }
 
@@ -18,6 +18,14 @@ export const addItem = (item) => dispatch => {
             type:ACTION_TYPES.ADD_INVOICE_PRODUCT,
             payload: item
         })
+}
+
+export const deleteItem = (id) => dispatch => {
+    console.log("delete item", id)
+    dispatch({
+        type:ACTION_TYPES.DELETE_INVOICE_PRODUCT,
+        payload: id
+    })
 }
 
 /*const initialState ={
