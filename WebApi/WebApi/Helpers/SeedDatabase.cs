@@ -21,24 +21,17 @@ namespace WebApi.Helpers
                 {
                     return;
                 }
-                Product[] products =
+                var products = new List<Product>();
+                for(int i = 0; i<100; i++)
                 {
-                    new Product()
+                    var product = new Product()
                     {
-                        Name = "Chleb",
-                        Price = 2.4m
-                    },
-                    new Product()
-                    {
-                        Name = "Mleko",
-                        Price = 1.6m
-                    },
-                    new Product()
-                    {
-                        Name = "Gitara",
-                        Price = 10.5m
-                    }
-                };
+                        Name = $"Produkt {i}",
+                        Price = i
+                    };
+                    products.Add(product);
+                }
+                
                 context.Product.AddRange(products);
                 context.SaveChanges();
             }

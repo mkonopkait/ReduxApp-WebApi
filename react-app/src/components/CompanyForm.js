@@ -9,9 +9,23 @@ const styles = theme => ({
     root: {
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
-            minWidth: 230,
+            minWidth: 200,
+            
         }
     },
+    Main:{
+        alignItems: 'center',
+        justifyContent:'center',
+        margin: theme.spacing(1),
+        width: '20%',
+    },
+    Button:{
+        width: '20%',
+        height: '30%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: theme.spacing(1)
+    }
 })
 
 const initialFieldValues = {
@@ -38,11 +52,11 @@ const CompanyForm = ({classes, ...props}) => {
         if('sCompanyName' in fieldValues)
             temp.sCompanyName = fieldValues.sCompanyName?"":"To pole jest wymagane"
         if('sNip' in fieldValues)
-            temp.sNip = (fieldValues.sNip)?"":"NIP jest niepoprawny"
+            temp.sNip = (/([0-9]{10})/).test(fieldValues.sNip)?"":"NIP wymaga 10 cyfr"
         if('sAddress' in fieldValues)
             temp.sAddress = fieldValues.sAddress?"":"To pole jest wymagane"
         if('sZipCode' in fieldValues)
-            temp.sZipCode = fieldValues.sZipCode?"":"To pole jest wymagane"
+            temp.sZipCode = (/([0-9]{2})\-[0-9]{3}/).test(fieldValues.sZipCode)?"":"To pole jest wymagane"
         if('sPlace' in fieldValues)
             temp.sPlace = fieldValues.sPlace?"":"To pole jest wymagane"
         if('sLocality' in fieldValues)
@@ -50,11 +64,11 @@ const CompanyForm = ({classes, ...props}) => {
         if('pCompanyName' in fieldValues)
             temp.pCompanyName = fieldValues.pCompanyName?"":"To pole jest wymagane"
         if('pNip' in fieldValues)
-            temp.pNip = fieldValues.pNip?"":"To pole jest wymagane"
+            temp.pNip = (/([0-9]{10})/).test(fieldValues.pNip)?"":"NIP wymaga 10 cyfr"
         if('pAddress' in fieldValues)
             temp.pAddress = fieldValues.pAddress?"":"To pole jest wymagane"
         if('pZipCode' in fieldValues)
-            temp.pZipCode = fieldValues.pZipCode?"":"To pole jest wymagane"
+            temp.pZipCode = (/([0-9]{2})\-[0-9]{3}/).test(fieldValues.pZipCode)?"":"To pole jest wymagane"
         if('pPlace' in fieldValues)
             temp.pPlace = fieldValues.pPlace?"":"To pole jest wymagane"
         if('pLocality' in fieldValues)
@@ -85,9 +99,9 @@ const CompanyForm = ({classes, ...props}) => {
 
     return ( 
     <form autoComplete="off" noValidate className={classes.root} onSubmit={handleSubmit}>
-        <Grid container>
-            <Grid item xs={6}>
-                <TextField
+        <Grid container >
+            <Grid className={classes.Main} item sm={5} xs={6}>
+                <TextField 
                     name="sCompanyName"
                     variant="outlined"
                     label="Sprzedawca"
@@ -111,31 +125,26 @@ const CompanyForm = ({classes, ...props}) => {
                     onChange={handleInputChange}
                     {...(errors.sAddress && {error:true, helperText: errors.sAddress})}
                 />
-                <Grid container>
-                    <Grid item xs={6}>
-                        <TextField
-                            name="sZipCode"
-                            variant="outlined"
-                            label="Kod pocztowy"
-                            value={values.sZipCode}
-                            onChange={handleInputChange}
-                            {...(errors.sZipCode && {error:true, helperText: errors.sZipCode})}
-                        />
-                    </Grid><Grid item xs={6}>
-                        <TextField
-                            name="sLocality"
-                            variant="outlined"
-                            label="Miejscowość"
-                            value={values.sLocality}
-                            onChange={handleInputChange}
-                            {...(errors.sLocality && {error:true, helperText: errors.sLocality})}
-                        />
-                    </Grid>
-                </Grid>
-           
+                
+                <TextField
+                    name="sZipCode"
+                    variant="outlined"
+                    label="Kod pocztowy"
+                    value={values.sZipCode}
+                    onChange={handleInputChange}
+                    {...(errors.sZipCode && {error:true, helperText: errors.sZipCode})}
+                />
             
+                <TextField
+                    name="sLocality"
+                    variant="outlined"
+                    label="Miejscowość"
+                    value={values.sLocality}
+                    onChange={handleInputChange}
+                    {...(errors.sLocality && {error:true, helperText: errors.sLocality})}
+                />
             </Grid>
-            <Grid item xs={6}>
+            <Grid className={classes.Main} item  item sm={5} xs={6}>
                 <TextField
                     name="pCompanyName"
                     variant="outlined"
@@ -160,34 +169,27 @@ const CompanyForm = ({classes, ...props}) => {
                     onChange={handleInputChange}
                     {...(errors.pAddress && {error:true, helperText: errors.pAddress})}
                 />
-                <Grid container>
-                    <Grid item xs={6}>
-                        <TextField
-                            name="pZipCode"
-                            variant="outlined"
-                            label="Kod pocztowy"
-                            value={values.pZipCode}
-                            onChange={handleInputChange}
-                            {...(errors.pZipCode && {error:true, helperText: errors.pZipCode})}
-                        />
-                    </Grid><Grid item xs={6}>
-                        <TextField
-                            name="pLocality"
-                            variant="outlined"
-                            label="Miejscowość"
-                            value={values.pLocality}
-                            onChange={handleInputChange}
-                            {...(errors.pLocality && {error:true, helperText: errors.pLocality})}
-                        />
-                    </Grid>
-                </Grid>
-           
-            
+                <TextField
+                    name="pZipCode"
+                    variant="outlined"
+                    label="Kod pocztowy"
+                    value={values.pZipCode}
+                    onChange={handleInputChange}
+                    {...(errors.pZipCode && {error:true, helperText: errors.pZipCode})}
+                />
+                <TextField
+                    name="pLocality"
+                    variant="outlined"
+                    label="Miejscowość"
+                    value={values.pLocality}
+                    onChange={handleInputChange}
+                    {...(errors.pLocality && {error:true, helperText: errors.pLocality})}
+                />
             </Grid>
-            <Grid item xs={12}>
-                <ProductsList/>
-                <ProductsInput/>
-                <Button
+            <Grid className={classes.Main} item xs={8} sm={11}>
+                <ProductsList />
+                <ProductsInput />
+                <Button className={classes.Button}
                     variant="contained"
                     color="primary"
                     type="submit"

@@ -41,10 +41,13 @@ export const invoiceProduct = (state=initialState, action) =>{
                 name: action.payload.name,
                 price: action.payload.price
             }
-            return{
-                ...state,
-                invoiceList:[...state.invoiceList, newItem]
-            }
+                if(state.invoiceList.find(x => x.productId == action.payload.productId) == undefined)
+                return{
+                    ...state,
+                    invoiceList:[...state.invoiceList, newItem]
+                    //invoiceList:[state.invoiceList.filter(x => x.productId == action.payload.productId) == false ? [...state.invoiceList, newItem] : state.invoiceList]
+                    
+                }
         case ACTION_TYPES.DELETE_INVOICE_PRODUCT:
             console.log("id", action.payload)
             return{

@@ -7,16 +7,18 @@ import CompanyForm from "./CompanyForm";
 import ProductsList from "./ProductsList";
 import ProductsListItem from "./ProductsListItem";
 import ProductsInput from "./ProductsInput";
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import Pdf from "react-to-pdf";
 
 const styles = theme => ({
     paper:{
-        margin: theme.spacing(2),
+        margin: theme.spacing(4),
         padding: theme.spacing(2)
     },
     div:{
         textAlign:"center",
-        fontSize:"1rem",
+        fontSize:"1.1rem",
         justifyContent:"center",
         margin: "0"
     }
@@ -39,6 +41,11 @@ const Invoice = ({classes, ...props}) => {
 
     return (
         <Paper ref={ref} className={classes.paper} elevation={3} style={{backgroundColor: '#F5F5F5'}}>
+            <Tabs>
+                <Tab>
+                    dsadass
+                </Tab>
+            </Tabs>
             <Pdf targetRef={ref} filename="code-example.pdf">
                 {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
             </Pdf>
@@ -47,7 +54,7 @@ const Invoice = ({classes, ...props}) => {
             </div>
             <form onSubmit={handleSubmit}>
                 <Grid container>
-                    <Grid item xs={10}>
+                    <Grid item xs={12}>
                         <CompanyForm/>
                     </Grid>
                     <Grid item xs={10}>
